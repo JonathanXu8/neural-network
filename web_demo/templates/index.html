@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Digit Recognizer</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+    <h1>Draw a digit</h1>
+    <canvas id="canvas" width="280" height="280" style="border:1px solid #000;"></canvas>
+    <button onclick="submitDrawing()">Predict</button>
+    <p id="result"></p>
+
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+
+        let drawing = false;
+        let prevX = 0, prevY = 0;
+
+        // Brush settings
+        ctx.strokeStyle = 'black';
+        ctx.lineWidth = 4;
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+
+        canvas.addEventListener('mousedown', (e) => {
+            drawing = true;
+            [prevX, prevY] = [e.offsetX, e.offsetY];
+        });
+
+        canvas.addEventListener('mouseup', () => drawing = false);
+        canvas.addEventListener('mouseout', () => drawing = false);
+
+        canvas.addEventListener('mousemove', (e) => {
+            if (!drawing) return;
+            const [currX, currY] = [e.offsetX, e.offsetY];
+            ctx.beginPath();
+            ctx.moveTo(prevX, prevY);
+            ctx.lineTo(currX, currY);
+            ctx.stroke();
+            [prevX, prevY] = [currX, currY];
+        });
+
+        function clearCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+
+        function submitDrawing() {
+            canvas.toBlob(blob => {
+                const formData = new FormData();
+                formData.append('image', blob, 'digit.png');
+                fetch('/predict', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('result').innerText = 'Prediction: ' + data.prediction;
+                });
+            });
+        }
+    </script>
+</body>
+</html>
