@@ -4,7 +4,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     let drawing = false;
 
-    ctx.lineWidth = 6;  // a bit thinner
+    ctx.lineWidth = 6;
     ctx.lineCap = 'round';
     ctx.strokeStyle = 'black';
 
@@ -35,4 +35,22 @@ window.addEventListener('DOMContentLoaded', () => {
         document.getElementById('result').textContent = '';
     });
 
+    document.getElementById('predict').addEventListener('click', () => {
+        const imageData = canvas.toDataURL('image/png');
+        fetch('/predict', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ image: imageData })
+        })
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('result').textContent = `Prediction: ${data.prediction}`;
+        })
+        .catch(err => {
+            document.getElementById('result').textContent = 'Error during prediction';
+            console.error(err);
+        });
+    });
 });

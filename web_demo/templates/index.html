@@ -4,32 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Handwritten Digit Recognizer</title>
-    <style>
-        #canvas {
-            border: 1px solid black;
-            touch-action: none; /* Prevent touch scrolling on mobile */
-        }
-        button {
-            margin-top: 10px;
-            margin-right: 10px;
-            padding: 10px 15px;
-            font-size: 16px;
-        }
-        #result {
-            margin-top: 15px;
-            font-size: 18px;
-            font-weight: bold;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
     <h1>Draw a digit (0-9)</h1>
-    <canvas id="canvas" width="280" height="280"></canvas><br />
+    <canvas class="canvas" id="canvas" width="280" height="280"></canvas><br />
     <button id="clear">Clear</button>
     <button id="predict">Predict</button>
     <div id="result"></div>
 
-    <!-- Link to external JS -->
-    <script src="../static/scripts.js"></script>
+
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
 </body>
 </html>
