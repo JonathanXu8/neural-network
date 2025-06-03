@@ -1,64 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Digit Recognizer</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Handwritten Digit Recognizer</title>
+    <style>
+        #canvas {
+            border: 1px solid black;
+            touch-action: none; /* Prevent touch scrolling on mobile */
+        }
+        button {
+            margin-top: 10px;
+            margin-right: 10px;
+            padding: 10px 15px;
+            font-size: 16px;
+        }
+        #result {
+            margin-top: 15px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
-    <h1>Draw a digit</h1>
-    <canvas id="canvas" width="280" height="280" style="border:1px solid #000;"></canvas>
-    <button onclick="submitDrawing()">Predict</button>
-    <p id="result"></p>
+    <h1>Draw a digit (0-9)</h1>
+    <canvas id="canvas" width="280" height="280"></canvas><br />
+    <button id="clear">Clear</button>
+    <button id="predict">Predict</button>
+    <div id="result"></div>
 
-    <script>
-        const canvas = document.getElementById('canvas');
-        const ctx = canvas.getContext('2d');
-
-        let drawing = false;
-        let prevX = 0, prevY = 0;
-
-        // Brush settings
-        ctx.strokeStyle = 'black';
-        ctx.lineWidth = 4;
-        ctx.lineCap = 'round';
-        ctx.lineJoin = 'round';
-
-        canvas.addEventListener('mousedown', (e) => {
-            drawing = true;
-            [prevX, prevY] = [e.offsetX, e.offsetY];
-        });
-
-        canvas.addEventListener('mouseup', () => drawing = false);
-        canvas.addEventListener('mouseout', () => drawing = false);
-
-        canvas.addEventListener('mousemove', (e) => {
-            if (!drawing) return;
-            const [currX, currY] = [e.offsetX, e.offsetY];
-            ctx.beginPath();
-            ctx.moveTo(prevX, prevY);
-            ctx.lineTo(currX, currY);
-            ctx.stroke();
-            [prevX, prevY] = [currX, currY];
-        });
-
-        function clearCanvas() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-        }
-
-        function submitDrawing() {
-            canvas.toBlob(blob => {
-                const formData = new FormData();
-                formData.append('image', blob, 'digit.png');
-                fetch('/predict', {
-                    method: 'POST',
-                    body: formData
-                })
-                .then(response => response.json())
-                .then(data => {
-                    document.getElementById('result').innerText = 'Prediction: ' + data.prediction;
-                });
-            });
-        }
-    </script>
+    <!-- Link to external JS -->
+    <script src="../static/scripts.js"></script>
 </body>
 </html>
