@@ -1,10 +1,10 @@
 import numpy as np
 from ml.activations.base import Activation
 
-class ReLU(Activation):
+class Sigmoid(Activation):
     def forward(self, x: np.ndarray) -> np.ndarray:
-        self.input = x
-        return np.maximum(0, x)
+        self.output = 1 / (1 + np.exp(-x))
+        return self.output
 
     def backward(self, x: np.ndarray, grad_output: np.ndarray) -> np.ndarray:
-        return grad_output * (x > 0)
+        return grad_output * self.output * (1 - self.output)
