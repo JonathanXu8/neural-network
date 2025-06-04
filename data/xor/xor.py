@@ -6,25 +6,6 @@ import random
 import matplotlib.pyplot as plt
 
 def generate_xor_data(n_per_quadrant=500, noise=0.1, random_seed=42):
-    """
-    Generate a 2D XOR dataset with points scattered around four corners.
-
-    Parameters
-    ----------
-    n_per_quadrant : int
-        Number of samples to generate per corner (total samples = 4 * n_per_quadrant).
-    noise : float
-        Standard deviation of Gaussian noise added around each corner.
-    random_seed : int
-        Seed for reproducibility.
-
-    Returns
-    -------
-    X : numpy.ndarray of shape (4 * n_per_quadrant, 2)
-        The 2D coordinates of all samples.
-    y : numpy.ndarray of shape (4 * n_per_quadrant,)
-        The binary XOR labels (0 or 1).
-    """
     np.random.seed(random_seed)
 
     # Define the four corner centers
@@ -55,22 +36,6 @@ def generate_xor_data(n_per_quadrant=500, noise=0.1, random_seed=42):
 
 
 def load_xor():
-    """
-    Convenience function that returns a full XOR dataset split into training and testing.
-
-    Returns
-    -------
-    (X_train, y_train), (X_test, y_test) : tuple
-        X_train : numpy.ndarray of shape (train_size, 2)
-        y_train : numpy.ndarray of shape (train_size,)
-        X_test  : numpy.ndarray of shape (test_size, 2)
-        y_test  : numpy.ndarray of shape (test_size,)
-
-    Notes
-    -----
-    - By default, 80% of generated data is used for training and 20% for testing.
-    - Total generated points = 4 * n_per_quadrant. Default n_per_quadrant is 500, so total = 2000.
-    """
     # Generate 2000 points (500 per quadrant)
     X, y = generate_xor_data(n_per_quadrant=500, noise=0.1, random_seed=42)
     total = len(X)
@@ -82,18 +47,6 @@ def load_xor():
 
 
 def show_xor_scatter(X, y, n=200):
-    """
-    Plot a random subset of XOR data points in a 2D scatter, colored by label.
-
-    Parameters
-    ----------
-    X : numpy.ndarray of shape (N, 2)
-        2D coordinates of samples.
-    y : numpy.ndarray of shape (N,)
-        Binary labels (0 or 1).
-    n : int
-        Number of points to plot (sampled randomly).
-    """
     N = len(X)
     indices = random.sample(range(N), min(n, N))
     pts = X[indices]

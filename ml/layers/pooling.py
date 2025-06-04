@@ -6,9 +6,10 @@ class MaxPooling2D:
         self.stride = stride
 
     def forward(self, input):
-        self.input = input  # shape: (batch, channels, height, width)
+        self.input = input
         batch_size, channels, h, w = input.shape
 
+        # output dimensions
         self.h_out = (h - self.pool_size) // self.stride + 1
         self.w_out = (w - self.pool_size) // self.stride + 1
 
@@ -33,7 +34,7 @@ class MaxPooling2D:
                         self.max_indices[b, c, h_start:h_end, w_start:w_end] += max_mask
         return output
 
-    def backward(self, d_out):
+    def backward(self, d_out, learning_rate):
         d_input = np.zeros_like(self.input)
 
         for b in range(d_out.shape[0]):
