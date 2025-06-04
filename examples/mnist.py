@@ -1,3 +1,7 @@
+'''
+How to run from neural-network % python3 -m examples.mnist                                                  
+'''
+
 import numpy as np
 from ml.layers.conv import Conv2D
 from ml.layers.pooling import MaxPooling2D
