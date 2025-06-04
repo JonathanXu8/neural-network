@@ -4,7 +4,7 @@ from ml.layers.base import Layer
 class Dense(Layer):
     def __init__(self, input_size, output_size):
         # Initialize weights with small random values
-        self.weights = np.random.randn(input_size, output_size) * 0.01
+        self.weights = np.random.randn(input_size, output_size) * 0.1
         self.biases = np.zeros((1, output_size))
 
         # Placeholders for gradients and inputs
@@ -22,7 +22,7 @@ class Dense(Layer):
         self.grad_biases = np.sum(grad_output, axis=0, keepdims=True)
 
         # Gradient of input to propagate to previous layer
-        grad_input = np.dot(grad_output, self.weights.T)
+        grad_input = np.dot(grad_output, self.weights.T,)
 
         # Gradient descent update
         self.weights -= learning_rate * self.grad_weights

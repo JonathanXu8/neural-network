@@ -9,5 +9,5 @@ class Flatten:
         batch_size = input.shape[0]
         return input.reshape(batch_size, -1)
 
-    def backward(self, d_out):
+    def backward(self, d_out, learning_rate):
         return d_out.reshape(self.input_shape)
