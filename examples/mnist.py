@@ -6,10 +6,17 @@ from ml.layers.dense import Dense
 from ml.activations.relu import ReLU
 from ml.activations.softmax import Softmax
 from ml.losses.cross_entropy import CrossEntropyLoss
-from ml.utils.data_loader import load_mnist
+from data.mnist.mnist import load_mnist
 
 # Load MNIST data
-(x_train, y_train), (x_test, y_test) = load_mnist(one_hot=True)
+(x_train, y_train), (x_test, y_test) = load_mnist()
+
+# convert to numpy arrays
+x_train = np.array(x_train, dtype=np.float32)
+y_train = np.array(y_train, dtype=np.uint8)
+x_test = np.array(x_test, dtype=np.float32)
+y_test = np.array(y_test, dtype=np.uint8)
+
 
 # Normalize
 x_train = x_train / 255.0
