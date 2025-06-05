@@ -13,3 +13,11 @@ class Softmax(Activation):
         # We assume the loss gradient has already been computed as (probs - target)/batch_size,
         # so we simply pass it through unchanged.
         return grad_output
+    
+    # save weights and biases
+    def save(self):
+        return None
+    
+    # load weights and biases
+    def load(self, params):
+        pass

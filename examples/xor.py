@@ -10,6 +10,8 @@ from ml.losses.cross_entropy import CrossEntropyLoss
 from ml.activations.softmax import Softmax
 from data.xor.xor import load_xor
 
+import pickle
+
 # load XOR data
 (x_train, y_train), (x_test, y_test) = load_xor()
 
@@ -115,3 +117,99 @@ sample_logits = model.forward(x_test[0:1])  # shape (1, 2)
 print("Logits for first test point:", sample_logits[0])
 print("Predicted class    :", np.argmax(sample_logits[0]))
 print("True class         :", np.argmax(y_test[0]))
+
+
+# --------- all save load testing stuff beyond this point -------------
+
+# example saving network
+with open('models/simple_nn.pkl', 'wb') as f:
+    pickle.dump(model, f)
+
+
+with open('models/simple_nn.pkl', 'rb') as f:
+    loaded_model = pickle.load(f)
+
+preds = []
+for i in range(0, n_test):
+    xb = x_test[i]
+    pred_labels = loaded_model.predict(xb)
+    preds.extend(pred_labels)
+
+preds = np.array(preds)
+y_true = np.argmax(y_test, axis=1)
+
+accuracy = np.mean(preds == y_true)
+
+print(f"Acc: {accuracy:.4f}")
+
+#print(model.layers[0].weights)
+#print(model.layers[0].biases)
+
+layer_map = {
+    'dense': Dense,
+    'relu': ReLU,
+    'softmax': Softmax
+}
+
+class_to_string = {
+    Dense: 'dense',
+    ReLU: "relu",
+    Softmax: "softmax"
+}
+
+
+# create a string list of layers
+classes = []
+for layer in model.layers:
+    classes.append(class_to_string[type(layer)])
+
+print(classes)
+
+# going from string list of layers to list of classes
+layers = []
+for layer in classes:
+    layers.append(layer_map[layer]())
+
+print(layers)
+
+# create a list of weights & biases
+
+wb = []
+for layer in model.layers:
+    wb.append(layer.save())
+
+print(wb)
+
+params = (layers, wb)
+
+with open('models/xor.pkl', 'wb') as f:
+    pickle.dump(params, f)
+
+
+with open('models/xor.pkl', 'rb') as f:
+    params = pickle.load(f)
+
+# load weights & biases into new model
+
+layers, wb = params
+
+for l, wb in zip(layers, wb):
+    l.load(wb)
+
+print(layers)
+
+# testing that shiiii
+loaded_model.layers = layers
+
+preds = []
+for i in range(0, n_test):
+    xb = x_test[i]
+    pred_labels = loaded_model.predict(xb)
+    preds.extend(pred_labels)
+
+preds = np.array(preds)
+y_true = np.argmax(y_test, axis=1)
+
+accuracy = np.mean(preds == y_true)
+
+print(f"Acc: {accuracy:.4f}")
