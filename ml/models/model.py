@@ -2,9 +2,16 @@ import numpy as np
 import pickle
 
 from ml.layers.dense import Dense
+from ml.layers.conv import Conv2D
+from ml.layers.flatten import Flatten
+from ml.layers.pooling import MaxPooling2D
+
 from ml.activations.relu import ReLU
-from ml.losses.cross_entropy import CrossEntropyLoss
+from ml.activations.sigmoid import Sigmoid
 from ml.activations.softmax import Softmax
+
+from ml.losses.cross_entropy import CrossEntropyLoss
+from ml.losses.mse import MSELoss
 
 class Model:
     def __init__(self, layers=None, loss=None):
@@ -69,9 +76,14 @@ class Model:
     def save(self, path):
         class_to_string = {
             Dense: 'dense',
+            Conv2D: 'conv',
+            Flatten: 'flatten',
+            MaxPooling2D: 'maxpool',
             ReLU: 'relu',
+            Sigmoid: 'sigmoid',
             Softmax: 'softmax',
-            CrossEntropyLoss: 'celoss'
+            CrossEntropyLoss: 'celoss',
+            MSELoss: 'mseloss'
         }
 
         layers = []
@@ -90,9 +102,14 @@ class Model:
     def load(self, path):
         string_to_class = {
             'dense': Dense,
+            'conv': Conv2D,
+            'flatten': Flatten,
+            'maxpool': MaxPooling2D,
             'relu': ReLU,
+            'sigmoid': Sigmoid,
             'softmax': Softmax,
-            'celoss': CrossEntropyLoss
+            'celoss': CrossEntropyLoss,
+            'mseloss': MSELoss
         }
 
         with open(path, 'rb') as f:

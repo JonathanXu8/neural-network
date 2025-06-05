@@ -8,3 +8,11 @@ class Sigmoid(Activation):
 
     def backward(self, x: np.ndarray, grad_output: np.ndarray) -> np.ndarray:
         return grad_output * self.output * (1 - self.output)
+    
+    # save weights and biases
+    def save(self):
+        return None
+    
+    # load weights and biases
+    def load(self, params):
+        pass

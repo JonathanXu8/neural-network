@@ -1,3 +1,7 @@
+'''
+Creates, trains, and saveds xor model
+'''
+
 import numpy as np
 from ml.layers.dense import Dense
 from ml.activations.relu import ReLU
@@ -5,8 +9,6 @@ from ml.losses.cross_entropy import CrossEntropyLoss
 from ml.activations.softmax import Softmax
 from data.xor.xor import load_xor
 from ml.models.model import Model
-
-import pickle
 
 # load XOR data
 (x_train, y_train), (x_test, y_test) = load_xor()

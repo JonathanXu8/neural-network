@@ -9,3 +9,11 @@ class Activation(ABC):
     @abstractmethod
     def backward(self, x: np.ndarray, grad_output: np.ndarray) -> np.ndarray:
         pass
+
+    @abstractmethod
+    def save(self):
+        return None
+    
+    @abstractmethod
+    def load(self, params):
+        pass
