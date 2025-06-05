@@ -36,5 +36,5 @@ model = Model(
 
 model.train(10, 5, 0.05, x_train, y_train, x_test, y_test)
 
-model.save('saved_models/test.pkl')
+model.save('saved_models/xor.pkl')
 

@@ -24,7 +24,7 @@ n_test  = x_test.shape[0]
 
 model = Model()
 
-model.load('saved_models/test.pkl')
+model.load('saved_models/xor.pkl')
 
-print(model.test(x_test, y_test))
+print(f'accuracy: {model.test(x_test, y_test):.4f}')
 

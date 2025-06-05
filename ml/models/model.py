@@ -1,6 +1,5 @@
 import numpy as np
 import pickle
-import os
 
 from ml.layers.dense import Dense
 from ml.activations.relu import ReLU
