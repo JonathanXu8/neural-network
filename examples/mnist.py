@@ -38,9 +38,10 @@ y_test  = np.eye(num_classes, dtype=np.float32)[y_test]
 class SimpleNetwork:
     def __init__(self):
         self.layers = [
+            Conv2D(1, 4, (1, 28, 28)),
             MaxPooling2D(),
             Flatten(),
-            Dense(196, 64),
+            Dense(144, 64),
             ReLU(),
             Dense(64, 256),
             ReLU(),
@@ -81,7 +82,7 @@ class SimpleNetwork:
 
 # training
 model = SimpleNetwork()
-epochs = 5
+epochs = 10
 batch_size = 10
 learning_rate = 0.01
 
