@@ -122,11 +122,11 @@ print("True class         :", np.argmax(y_test[0]))
 # --------- all save load testing stuff beyond this point -------------
 
 # example saving network
-with open('models/simple_nn.pkl', 'wb') as f:
+with open('saved_models/simple_nn.pkl', 'wb') as f:
     pickle.dump(model, f)
 
 
-with open('models/simple_nn.pkl', 'rb') as f:
+with open('saved_models/simple_nn.pkl', 'rb') as f:
     loaded_model = pickle.load(f)
 
 preds = []
@@ -182,11 +182,11 @@ print(wb)
 
 params = (layers, wb)
 
-with open('models/xor.pkl', 'wb') as f:
+with open('saved_models/xor.pkl', 'wb') as f:
     pickle.dump(params, f)
 
 
-with open('models/xor.pkl', 'rb') as f:
+with open('saved_models/xor.pkl', 'rb') as f:
     params = pickle.load(f)
 
 # load weights & biases into new model

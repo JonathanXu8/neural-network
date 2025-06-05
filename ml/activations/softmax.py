@@ -10,8 +10,7 @@ class Softmax(Activation):
         return self.output
 
     def backward(self, grad_output: np.ndarray, learning_rate: float) -> np.ndarray:
-        # We assume the loss gradient has already been computed as (probs - target)/batch_size,
-        # so we simply pass it through unchanged.
+        # We assume the loss gradient has already been computed as (probs - target)/batch_size, so we simply pass it through unchanged.
         return grad_output
     
     # save weights and biases

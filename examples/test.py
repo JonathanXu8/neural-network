@@ -1,7 +1,6 @@
 '''
-Test load
+Test loading
 '''
-
 
 import numpy as np
 from ml.layers.dense import Dense
@@ -63,7 +62,7 @@ class SimpleXORNet:
         logits = self.forward(x)
         return np.argmax(logits, axis=1)
 
-with open('models/xor.pkl', 'rb') as f:
+with open('saved_models/xor.pkl', 'rb') as f:
     params = pickle.load(f)
 
 # load weights & biases into new model
