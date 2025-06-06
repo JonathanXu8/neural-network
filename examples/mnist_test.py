@@ -1,4 +1,4 @@
-# neural-network % python3 web_demo/app.py
+# neural-network % python3 -m examples.mnist_test
 
 import numpy as np
 from ml.layers.dense import Dense
@@ -34,22 +34,21 @@ y_test  = np.eye(num_classes, dtype=np.float32)[y_test]
 
 model = Model(
     layers=[
-            Conv2D(1, 4 ,(1,28,28)),
-            Flatten(),
-            Dense(625, 64),
-            ReLU(),
-            Dense(64, 256),
-            ReLU(),
-            Dense(256, 128),
-            ReLU(),
-            Dense(128, 64),
-            ReLU(),
-            Dense(64, 10),
-            Softmax()
+        Flatten(),
+        Dense(28*28, 64),
+        ReLU(),
+        Dense(64, 256),
+        ReLU(),
+        Dense(256, 128),
+        ReLU(),
+        Dense(128, 64),
+        ReLU(),
+        Dense(64, 10),
+        Softmax()
     ],
     loss=CrossEntropyLoss()
 )
 
 model.train(5, 20, 0.01, x_train, y_train, x_test, y_test)
 
-model.save('saved_models/mnist_v1.pkl')
+model.save('saved_models/mnist_v2.pkl')
