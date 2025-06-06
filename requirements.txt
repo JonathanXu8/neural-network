@@ -4,3 +4,4 @@ llvmlite==0.44.0
 numpy==2.2.5
 packaging==24.2
 wheel==0.45.1
+scipy==1.13.1
