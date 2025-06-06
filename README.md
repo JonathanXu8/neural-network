@@ -86,7 +86,7 @@ model = Model(
 	],
 	loss=CrossEntropyLoss()
 )
-  
-model.train(5, 20, 0.01, x_train, y_train, x_test, y_test)
+ 
+model.train(5, 20, 0.01, x_train, y_train, x_test, y_test) # epochs, batch_size, lr...
 model.save('saved_models/mnist.pkl')
 ```
