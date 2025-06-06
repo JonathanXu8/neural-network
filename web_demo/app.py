@@ -1,3 +1,5 @@
+# usage: python3 web_demo/app.py
+
 from flask import Flask, render_template, request, jsonify
 from predict import predict_digit
 import base64

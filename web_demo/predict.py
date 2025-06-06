@@ -4,7 +4,6 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 import numpy as np
 
-from PIL import Image
 from scipy.ndimage import center_of_mass, shift
 
 from ml.models.model import Model
