@@ -1,6 +1,7 @@
 import numpy as np
 from ml.layers.dense import Dense
 from ml.layers.flatten import Flatten
+from ml.layers.conv import Conv2D
 from ml.activations.relu import ReLU
 from ml.losses.cross_entropy import CrossEntropyLoss
 from ml.activations.softmax import Softmax
@@ -29,12 +30,11 @@ num_classes = 10
 y_train = np.eye(num_classes, dtype=np.float32)[y_train]
 y_test  = np.eye(num_classes, dtype=np.float32)[y_test]
 
-n_test  = x_test.shape[0]
-
 model = Model(
     layers=[
+            Conv2D(1, 4 ,(1,28,28)),
             Flatten(),
-            Dense(28*28, 64),
+            Dense(625, 64),
             ReLU(),
             Dense(64, 256),
             ReLU(),
@@ -50,4 +50,4 @@ model = Model(
 
 model.train(10, 5, 0.01, x_train, y_train, x_test, y_test)
 
-model.save('saved_models/mnist.pkl')
+model.save('saved_models/mnist_v1.pkl')

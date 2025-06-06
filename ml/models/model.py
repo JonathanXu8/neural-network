@@ -44,6 +44,7 @@ class Model:
     def test(self, x_test, y_test):
         accuracy = 0
         for x, y in zip(x_test, y_test):
+            x = np.expand_dims(x, axis=0)
             if self.predict(x) == np.argmax(y):
                 accuracy += 1
         return accuracy / len(x_test)
