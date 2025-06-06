@@ -4,6 +4,8 @@ A fully functional machine learning library implemented **from scratch in NumPy*
 
 ## MNIST Demo
 
+The model used in this demo was trained in less than 1 minute!
+
 [Demo](https://www.render.com)
 
 ## Directory Structure
@@ -62,15 +64,15 @@ from data.mnist.mnist import load_mnist
 # convert to numpy arrays and normalize pixel values to [0,1]
 x_train = np.array(x_train_raw, dtype=np.float32) / 255.0
 y_train = np.array(y_train_raw, dtype=np.uint8)
-x_test  = np.array(x_test_raw,  dtype=np.float32) / 255.0
-y_test  = np.array(y_test_raw,  dtype=np.uint8)
+x_test = np.array(x_test_raw,  dtype=np.float32) / 255.0
+y_test = np.array(y_test_raw,  dtype=np.uint8)
 
 # one hot encode labels
 num_classes = 10
 y_train = np.eye(num_classes, dtype=np.uint8)[y_train]
-y_test  = np.eye(num_classes, dtype=np.uint8)[y_test]
+y_test = np.eye(num_classes, dtype=np.uint8)[y_test]
 
-model  =  Model(
+model = Model(
 	layers = [
 		Flatten(),
 		Dense(28*28, 64),
@@ -85,8 +87,8 @@ model  =  Model(
 		Softmax()
 	],
 	loss=CrossEntropyLoss()
-	)
-  
-model.train(5, 20, 0.01, x_train, y_train, x_test, y_test)
+)
+ 
+model.train(5, 20, 0.01, x_train, y_train, x_test, y_test) # epochs, batch_size, lr...
 model.save('saved_models/mnist.pkl')
 ```
