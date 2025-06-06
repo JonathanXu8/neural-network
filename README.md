@@ -2,9 +2,9 @@
 
 A fully functional machine learning library implemented **from scratch in NumPy**, complete with core layers, activation functions, and a working web demo for handwritten digit recognition using **Flask** and the **MNIST dataset**.
 
-## Demo
+## MNIST Demo
 
-[Demo](google.com)
+[Demo](https://www.google.com)
 
 ## Directory Structure
 
@@ -44,7 +44,7 @@ project-root/
 
 ## Usage
 
-How to create a network to classify mnist data (data import not included)
+How to create a network to classify mnist data
 
  ```python
 import numpy as np
@@ -54,6 +54,21 @@ from ml.activations.relu import ReLU
 from ml.losses.cross_entropy import CrossEntropyLoss
 from ml.activations.softmax import Softmax
 from ml.models.model import Model
+from data.mnist.mnist import load_mnist
+
+# load mnist data
+(x_train_raw, y_train_raw), (x_test_raw, y_test_raw) = load_mnist()
+
+# convert to numpy arrays and normalize pixel values to [0,1]
+x_train = np.array(x_train_raw, dtype=np.float32) / 255.0
+y_train = np.array(y_train_raw, dtype=np.uint8)
+x_test  = np.array(x_test_raw,  dtype=np.float32) / 255.0
+y_test  = np.array(y_test_raw,  dtype=np.uint8)
+
+# one hot encode labels
+num_classes = 10
+y_train = np.eye(num_classes, dtype=np.uint8)[y_train]
+y_test  = np.eye(num_classes, dtype=np.uint8)[y_test]
 
 model  =  Model(
 	layers = [
