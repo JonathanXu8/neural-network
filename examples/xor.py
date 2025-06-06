@@ -15,11 +15,11 @@ import pickle
 # load XOR data
 (x_train, y_train), (x_test, y_test) = load_xor()
 
-# convert to NumPy float arrays and one-hot encode labels
+# convert to NumPy float arrays and one hot encode labels
 x_train = np.array(x_train, dtype=np.float32)
 x_test  = np.array(x_test,  dtype=np.float32)
 
-# one-hot encode labels
+# one hot encode labels
 num_classes = 2
 y_train = np.eye(num_classes, dtype=np.float32)[y_train]
 y_test  = np.eye(num_classes, dtype=np.float32)[y_test]
@@ -67,7 +67,7 @@ class SimpleXORNet:
         logits = self.forward(x)
         return np.argmax(logits, axis=1)
 
-# Training loop parameters
+# training loop parameters
 model = SimpleXORNet()
 epochs = 10
 batch_size = 5

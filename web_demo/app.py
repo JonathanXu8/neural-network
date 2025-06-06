@@ -20,22 +20,22 @@ def index():
 def predict():
     data = request.get_json()
 
-    # Ensure 'image' key exists
+    # ensure image key exists
     if 'image' not in data:
         return jsonify({'error': 'Missing image data'}), 400
 
-    # Extract base64 image string
+    # extract base64 image string
     image_data = data['image']
 
-    # Remove the "data:image/png;base64," prefix
+    # remove the "data:image/png;base64," prefix
     image_data = re.sub('^data:image/.+;base64,', '', image_data)
 
-    # Decode and convert to image
+    # decode and convert to image
     try:
-        # Decode base64 string to bytes
+        # base64 string to bytes
         image_bytes = base64.b64decode(image_data)
 
-        # Load image and composite onto white background
+        # load image and composite onto white background
         image = Image.open(io.BytesIO(image_bytes)).convert("RGBA")
         background = Image.new("RGBA", image.size, (255, 255, 255, 255))
         image = Image.alpha_composite(background, image)
@@ -43,12 +43,11 @@ def predict():
         image = ImageOps.invert(image)
         image = image.resize((28, 28), Image.Resampling.NEAREST)
 
-        # Convert to numpy array and normalize
+        # convert to numpy array and normalize
         image_array = np.array(image) / 255.0
-        #image_array[image_array >= 0.1] = 1.0
 
         # Reshape for model
-        image_input = image_array.reshape(1, 28, 28)  # or (1, 1, 28, 28) depending on your model
+        image_input = image_array.reshape(1, 28, 28)
 
         prediction = predict_digit(image_input)
         return jsonify({'prediction': int(prediction)})

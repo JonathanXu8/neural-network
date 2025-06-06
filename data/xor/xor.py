@@ -10,13 +10,13 @@ def generate_xor_data(n_per_quadrant=500, noise=0.1, random_seed=42):
 
     # Define the four corner centers
     centers = np.array([
-        [0.0, 0.0],   # bottom-left  (label 0)
-        [0.0, 1.0],   # top-left     (label 1)
-        [1.0, 0.0],   # bottom-right (label 1)
-        [1.0, 1.0]    # top-right    (label 0)
+        [0.0, 0.0],
+        [0.0, 1.0],
+        [1.0, 0.0],
+        [1.0, 1.0]
     ])
 
-    # Corresponding labels: (0,0)=0, (0,1)=1, (1,0)=1, (1,1)=0
+    # labels: (0,0)=0, (0,1)=1, (1,0)=1, (1,1)=0
     labels = np.array([0, 1, 1, 0])
 
     X_list = []
@@ -27,16 +27,16 @@ def generate_xor_data(n_per_quadrant=500, noise=0.1, random_seed=42):
         X_list.append(pts)
         y_list.append(np.full(n_per_quadrant, label, dtype=int))
 
-    X = np.vstack(X_list)         # shape: (4 * n_per_quadrant, 2)
-    y = np.concatenate(y_list)    # shape: (4 * n_per_quadrant,)
+    X = np.vstack(X_list)
+    y = np.concatenate(y_list)
 
-    # Shuffle the combined dataset
+    # shuffle the combined dataset
     perm = np.random.permutation(len(X))
     return X[perm], y[perm]
 
 
 def load_xor():
-    # Generate 2000 points (500 per quadrant)
+    # generate 2000 points
     X, y = generate_xor_data(n_per_quadrant=500, noise=0.1, random_seed=42)
     total = len(X)
     split = int(0.8 * total)

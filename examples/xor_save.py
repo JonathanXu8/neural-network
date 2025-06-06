@@ -17,7 +17,7 @@ from ml.models.model import Model
 x_train = np.array(x_train, dtype=np.float32)
 x_test  = np.array(x_test,  dtype=np.float32)
 
-# one-hot encode labels
+# one hot encode labels
 num_classes = 2
 y_train = np.eye(num_classes, dtype=np.float32)[y_train]
 y_test  = np.eye(num_classes, dtype=np.float32)[y_test]
