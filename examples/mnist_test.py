@@ -1,3 +1,5 @@
+# neural-network % python3 web_demo/app.py
+
 import numpy as np
 from ml.layers.dense import Dense
 from ml.layers.flatten import Flatten
@@ -48,6 +50,6 @@ model = Model(
     loss=CrossEntropyLoss()
 )
 
-model.train(10, 5, 0.01, x_train, y_train, x_test, y_test)
+model.train(5, 20, 0.01, x_train, y_train, x_test, y_test)
 
 model.save('saved_models/mnist_v1.pkl')

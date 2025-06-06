@@ -4,6 +4,7 @@ import base64
 import io
 from PIL import Image, ImageOps
 import re
+import traceback
 
 import numpy as np
 
@@ -51,6 +52,7 @@ def predict():
         return jsonify({'prediction': int(prediction)})
     except Exception as e:
         print(str(e))
+        traceback.print_exc() 
         return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
