@@ -11,10 +11,10 @@ A fully functional machine learning library implemented **from scratch in NumPy*
 <pre>
 project-root/ 
 ├── data/ # Datasets and data loaders 
-│ ├── mnist # Mnist data set 
-│ └── xor # XOR data set
+│ ├── mnist/ # Mnist data set 
+│ └── xor/ # XOR data set
 ├── examples/ # Example training/testing scripts 
-│ └── mnist_test.py 
+│ └── mnist.py 
 ├── ml/ # Core machine learning modules 
 │ ├── layers/ # Layer implementations (Dense, Conv2D, etc.) 
 │ ├── activations/ # Activation functions (ReLU, Softmax, etc.) 
