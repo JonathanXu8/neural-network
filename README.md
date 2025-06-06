@@ -4,6 +4,8 @@ A fully functional machine learning library implemented **from scratch in NumPy*
 
 ## MNIST Demo
 
+The model used in this demo was trained in less than 1 minute!
+
 [Demo](https://www.render.com)
 
 ## Directory Structure
