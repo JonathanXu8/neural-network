@@ -4,7 +4,7 @@ A fully functional machine learning library implemented **from scratch in NumPy*
 
 ## MNIST Demo
 
-[Demo](https://www.google.com)
+[Demo](https://www.render.com)
 
 ## Directory Structure
 
@@ -30,8 +30,8 @@ project-root/
 **Layers**
 - Dense
 - Convolutional
-- flatten
-- pooling
+- Flatten
+- Pooling
 
 **Activations**
 - ReLU
