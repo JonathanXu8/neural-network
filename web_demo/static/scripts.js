@@ -4,7 +4,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     let drawing = false;
 
-    ctx.lineWidth = 6;
+    ctx.lineWidth = 14;
     ctx.lineCap = 'round';
     ctx.strokeStyle = 'black';
 

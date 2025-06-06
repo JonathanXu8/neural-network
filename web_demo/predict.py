@@ -1,14 +1,26 @@
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 import numpy as np
-#from ml.models.sequential import Sequential
-#from ml.utils.data_loader import load_model
-from utils import preprocess_image
+np.set_printoptions(
+    linewidth=200,   # wider lines so rows don't wrap
+    threshold=np.inf,  # print full array (no "..." truncation)
+    precision=2,       # round floats to 2 decimal places
+    suppress=True      # don't use scientific notation for small numbers
+)
+
+from PIL import Image
+
+from ml.models.model import Model
 
 # Load your trained model from disk
-#model = load_model("models/mnist_model.pkl")
+model = Model()
+model.load("saved_models/mnist.pkl")
 
-def predict_digit(image_bytes):
+def predict_digit(image):
+    #print(image)
 
-    #image = preprocess_image(image_bytes)
-    #prediction = model.predict(image)
-    #return int(np.argmax(prediction))
-    return NotImplementedError
+    prediction = model.predict(image)
+
+    return prediction
