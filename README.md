@@ -11,18 +11,19 @@ A fully functional machine learning library implemented **from scratch in NumPy*
 <pre>
 project-root/ 
 ├── data/ # Datasets and data loaders 
-│ ├── mnist.py 
-│ └── ... 
+│ ├── mnist # Mnist data set 
+│ └── xor # XOR data set
+├── examples/ # Example training/testing scripts 
+│ └── mnist_test.py 
 ├── ml/ # Core machine learning modules 
 │ ├── layers/ # Layer implementations (Dense, Conv2D, etc.) 
 │ ├── activations/ # Activation functions (ReLU, Softmax, etc.) 
 │ ├── losses/ # Loss functions 
 │ ├── models/ # Model class and training logic 
-│ └── utils.py 
-├── examples/ # Example training/testing scripts 
-│ └── mnist_test.py 
+│ └── utils/ # Utility functions
+├── saved_models/ # Directory to save trained models
+├── web_demo/ # React Web Demo
 ├── README.md 
-└── requirements.txt 
 </pre>
 
 ## Features
