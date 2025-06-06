@@ -37,6 +37,7 @@ y_test  = np.eye(num_classes, dtype=np.float32)[y_test]
 
 class SimpleNetwork:
     def __init__(self):
+        
         self.layers = [
             Conv2D(1, 4, (1, 28, 28)),
             MaxPooling2D(),

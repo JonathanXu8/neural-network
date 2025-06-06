@@ -22,8 +22,6 @@ num_classes = 2
 y_train = np.eye(num_classes, dtype=np.float32)[y_train]
 y_test  = np.eye(num_classes, dtype=np.float32)[y_test]
 
-n_test  = x_test.shape[0]
-
 model = Model(
     layers=[
         Dense(2, 16),

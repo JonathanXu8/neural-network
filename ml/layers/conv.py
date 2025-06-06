@@ -1,7 +1,7 @@
 import numpy as np
 
 class Conv2D:
-    def __init__(self, num_filters, filter_size, input_shape, stride=1, padding=0):
+    def __init__(self, num_filters=8, filter_size=3, input_shape=(1,28,28), stride=1, padding=0):
         self.num_filters = num_filters
         self.filter_size = filter_size  # square
         self.stride = stride
