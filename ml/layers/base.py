@@ -9,3 +9,11 @@ class Layer(ABC):
     @abstractmethod
     def backward(self, grad_output: np.ndarray, learning_rate: float) -> np.ndarray:
         pass
+
+    @abstractmethod
+    def save(self):
+        pass
+
+    @abstractmethod
+    def load(self, params):
+        pass

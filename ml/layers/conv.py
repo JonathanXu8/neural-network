@@ -97,3 +97,9 @@ class Conv2D:
         self.biases -= learning_rate * d_biases
 
         return d_input
+    
+    def save(self):
+        return (self.num_filters, self.filter_size, self.stride, self.padding, self.input_shape, self.filters, self.biases)
+
+    def load(self, params):
+        self.num_filters, self.filter_size, self.stride, self.padding, self.input_shape, self.filters, self.biases = params

@@ -11,3 +11,9 @@ class Flatten:
 
     def backward(self, d_out, learning_rate):
         return d_out.reshape(self.input_shape)
+    
+    def save(self):
+        return self.input_shape
+    
+    def load(self, params):
+        self.input_shape = params

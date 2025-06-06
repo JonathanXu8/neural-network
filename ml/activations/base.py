@@ -12,7 +12,7 @@ class Activation(ABC):
 
     @abstractmethod
     def save(self):
-        return None
+        pass
     
     @abstractmethod
     def load(self, params):

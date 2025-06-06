@@ -50,3 +50,9 @@ class MaxPooling2D:
                         mask = self.max_indices[b, c, h_start:h_end, w_start:w_end]
                         d_input[b, c, h_start:h_end, w_start:w_end] += mask * d_out[b, c, i, j]
         return d_input
+
+    def save(self):
+        return (self.pool_size, self.stride, self.input)
+    
+    def load(self, params):
+        self.pool_size, self.stride, self.input = params

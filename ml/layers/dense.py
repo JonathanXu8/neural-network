@@ -38,6 +38,4 @@ class Dense(Layer):
     
     # load weights and biases
     def load(self, params):
-        (weights, biases) = params
-        self.weights = weights
-        self.biases = biases
+        self.weights, self.biases = params
