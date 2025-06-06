@@ -1,0 +1,6 @@
+Flask==2.3.3
+gunicorn==21.2.0
+llvmlite==0.44.0
+numpy==2.2.5
+packaging==24.2
+wheel==0.45.1
