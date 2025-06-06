@@ -4,9 +4,9 @@ A fully functional machine learning library implemented **from scratch in Python
 
 ## MNIST Demo
 
-The model used in this demo was trained in less than 1 minute!
+The model used in this demo was trained in less than 1 minute on my laptop!
 
-[Demo](https://www.render.com)
+[Demo](https://neural-network-xp3m.onrender.com/)
 
 ## Directory Structure
 
