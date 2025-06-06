@@ -8,7 +8,22 @@ A fully functional machine learning library implemented **from scratch in NumPy*
 
 ## Directory Structure
 
-<pre> ```text project-root/ ├── data/ # Datasets and data loaders │ ├── mnist.py │ └── ... ├── ml/ # Core machine learning modules │ ├── layers/ # Layer implementations (Dense, Conv2D, etc.) │ ├── activations/ # Activation functions (ReLU, Softmax, etc.) │ ├── losses/ # Loss functions │ ├── models/ # Model class and training logic │ └── utils.py ├── examples/ # Example training/testing scripts │ └── mnist_test.py ├── README.md └── requirements.txt ``` </pre>
+<pre>
+project-root/ 
+├── data/ # Datasets and data loaders 
+│ ├── mnist.py 
+│ └── ... 
+├── ml/ # Core machine learning modules 
+│ ├── layers/ # Layer implementations (Dense, Conv2D, etc.) 
+│ ├── activations/ # Activation functions (ReLU, Softmax, etc.) 
+│ ├── losses/ # Loss functions 
+│ ├── models/ # Model class and training logic 
+│ └── utils.py 
+├── examples/ # Example training/testing scripts 
+│ └── mnist_test.py 
+├── README.md 
+└── requirements.txt 
+</pre>
 
 ## Features
 **Layers**
@@ -28,7 +43,7 @@ A fully functional machine learning library implemented **from scratch in NumPy*
 
 ## Usage
 
-Example of how to create a network to classify mnist data (data import not included)
+How to create a network to classify mnist data (data import not included)
 
  ```python
 import numpy as np
