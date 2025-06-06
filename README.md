@@ -24,7 +24,7 @@ project-root/
 │ ├── models/ # Model class and training logic 
 │ └── utils/ # Utility functions
 ├── saved_models/ # Directory to save trained models
-├── web_demo/ # React Web Demo
+├── web_demo/ # Web demo
 └── README.md 
 </pre>
 
