@@ -1,7 +1,7 @@
 # usage: python3 web_demo/app.py
 
 from flask import Flask, render_template, request, jsonify
-from predict import predict_digit
+from web_demo.predict import predict_digit
 import base64
 import io
 from PIL import Image, ImageOps
