@@ -1,6 +1,6 @@
 ## Neural Network From Scratch
 
-A fully functional machine learning library implemented **from scratch in Python using NumPy**, complete with core layers, activation functions, and a working web demo for handwritten digit recognition using **Flask** and the **MNIST dataset**.
+A fully functional, intuitive machine learning library implemented **from scratch in Python using NumPy**, complete with core layers, activation functions, and a working web demo for handwritten digit recognition using **Flask** and the **MNIST dataset**.
 
 ## MNIST Demo
 
